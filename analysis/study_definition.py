@@ -18,4 +18,9 @@ study = StudyDefinition(
             "int": {"distribution": "population_ages"},
         },
     ),
+
+    died_any=patients.died_from_any_cause(
+        on_or_after="2019-09-01",
+        returning="binary_flag"
+    ),
 )
