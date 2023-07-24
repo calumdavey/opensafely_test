@@ -4,15 +4,26 @@ author: "NIoT"
 output: html_document
 ---
 
+# Introduction 
+
+This is a short demonstration of reproducible research conducted in openSAFELY. 
+
+# Results
+## Age of the cohort 
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library('tidyverse')
 
-df_input <- read_csv(
+d <- read_csv(
   "../output/input.csv.gz",
-  col_types = cols(patient_id = col_integer(),age = col_double())
+  col_types = cols(patient_id = col_integer(), age = col_double(), died_any = col_integer())
 )
 
 # Age plot 
-plot_age <- ggplot(data=df_input, aes(df_input$age)) + geom_histogram()
+plot_age <- ggplot(data=d, aes(d$age)) + geom_histogram()
 plot_age
 ```
+
+## Deaths in the cohort 
+
+There are `r d$died_any %>% sum()` deaths in this dataset. 
